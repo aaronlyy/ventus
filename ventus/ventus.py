@@ -1,6 +1,5 @@
 # ventus.py
 from query import Query
-from filter import Filter
 from engine import Engine
 from searcher import Searcher
 
