@@ -1,7 +1,7 @@
 # filter.py
 
 class Filter:
-    """List of google dork filters
+    """google dork filters
     """
     ALLINTEXT = "allintext:" # Searches for occurrences of all the keywords given.
     INTEXT = "intext:" # Searches for the occurrences of keywords all at once or one at a time.

@@ -1,11 +1,12 @@
 # ventus.py
-import urllib.parse
+
 import requests
+from bs4 import BeautifulSoup
 
 from query import Query
 from filter import Filter
 from engine import Engine
-
+from search import search
 
 class Ventus:
     def __init__(self, engine: str):
@@ -15,11 +16,29 @@ class Ventus:
         """
         self._engine = engine
 
-    def _build_url(self, query: Query) -> str:
-        return f"{self._engine}{urllib.parse.quote(query.query)}"
+    def _request(self, query):
+        headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'
+        }
 
-    def search(self, query: str) -> list:
-        """Start a dork search with given engine and query
+        res = requests.get(self._engine, headers=headers, params=dict(q=query.query))
+        res.raise_for_status()
+
+        print(res.text)
+
+        soup = BeautifulSoup(res.text, "html.parser")
+        res_block = soup.find_all("div", attrs={"class": "g"})
+        links = []
+        for result in res_block:
+            element = result.find("a", href=True)
+            links.append(element["href"])
+
+        return links
+
+
+
+    def search(self, query: Query) -> list:
+        """Start a dork search with given query
 
         Args:
             
@@ -28,7 +47,8 @@ class Ventus:
         Returns:
             list: list of results
         """
-        pass
+        links = self._request(query)
+        return links
 
 
 if __name__ == "__main__":
@@ -39,3 +59,6 @@ if __name__ == "__main__":
     query.add_filter(Filter.FILETYPE, "env")
 
     results = ventus.search(query)
+
+    for i in results:
+        print(i)
