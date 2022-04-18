@@ -13,10 +13,13 @@ class Filter:
     FILETYPE = "filetype:" # Searches for a particular filetype mentioned in the query.
     LINK = "link:" # Searches for external links to pages.
     NUMRANGE = "numrange:" # Used to locate specific numbers in your searches.
-    BEFORE_AFTER = "(before: {} after: {})" # 	Used to search within a particular date range.
+    BEFORE = "before:" # Used to search before a particular date.
+    AFTER = "after:" # Used to search before a particular date.
     ALLINANCHOR = "allinanchor:" # This shows sites which have the keyterms in links pointing to them, in order of the most links.
     INANCHOR = "inanchor:" # This shows sites which have the keyterms in links pointing to them, in order of the most links.
     ALLINPOSTAUTHOR = "allinpostauthor:" # Exclusive to blog search, this one picks out blog posts that are written by specific individuals.
     INPOSTAUTHOR = "inpostauthor:" # Exclusive to blog search, this one picks out blog posts that are written by specific individuals.
     RELATED = "related:" # List web pages that are “similar” to a specified web page.
     CACHE = "cache:" # Shows the version of the web page that Google has in its cache.
+    AND = "&"
+    OR = "|"
