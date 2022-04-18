@@ -1,10 +1,9 @@
 # ventus.py
-
 import requests
 from bs4 import BeautifulSoup
 
 class Filter:
-    """google dork filters
+    """Dork filters
     """
     ALLINTEXT = "allintext:" # Searches for occurrences of all the keywords given.
     INTEXT = "intext:" # Searches for the occurrences of keywords all at once or one at a time.
@@ -28,6 +27,7 @@ class Filter:
     OR = "|"
 
 class Engine:
+    """Searchengine URL's"""
     GOOGLECOM = "https://google.com/search"
     GOOGLEDE = "https://google.de/search"
     GOOGLEFR = "https://google.fr/search"
@@ -76,11 +76,15 @@ class Query:
     def query(self) -> str:
         return self._query
 
-class Searcher:
-    def __init__(self, engine):
+class Ventus:
+    def __init__(self, engine: str = Engine.GOOGLECOM):
+        """
+        Args:
+            engine (str): query url from a searchengine (ex. Engine.GOOGLECOM)
+        """
         self._engine = engine
-    
-    def _request(self, query: Query) -> requests.Response:
+
+    def _request(self, query: Query) -> str:
         headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'
         }
@@ -101,19 +105,6 @@ class Searcher:
         return links
 
     def search(self, query: Query) -> list:
-        html = self._request(query)
-        links = self._parse(html)
-        return links
-
-class Ventus:
-    def __init__(self, engine: str = Engine.GOOGLECOM):
-        """
-        Args:
-            engine (str): query url from a searchengine (ex. Engine.GOOGLECOM)
-        """
-        self._searcher = Searcher(engine)
-
-    def search(self, query: Query) -> list:
         """Start a dork search with given query
 
         Args:
@@ -123,11 +114,12 @@ class Ventus:
         Returns:
             list: list of results
         """
-        links = self._searcher.search(query)
+        html = self._request(query)
+        links = self._parse(html)
         return links
 
 if __name__ == "__main__":
     q = Query()
-    q.add_filter(Filter.INTEXT, "test123")
+    q.add_filter(Filter.INTEXT, "test12345")
     v = Ventus()
     print(v.search(q))
