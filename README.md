@@ -1,4 +1,4 @@
-# ventus: a google dorking python library and cli
+# ventus: a google dorking library and cli
 
 ## how to use
 
