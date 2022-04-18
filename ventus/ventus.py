@@ -3,8 +3,8 @@ import requests
 from bs4 import BeautifulSoup
 
 class Filter:
-    """Dork filters
-    """
+    """Dork filters"""
+    
     ALLINTEXT = "allintext:" # Searches for occurrences of all the keywords given.
     INTEXT = "intext:" # Searches for the occurrences of keywords all at once or one at a time.
     INURL = "inurl:" # Searches for a URL matching one of the keywords.
@@ -28,14 +28,15 @@ class Filter:
 
 class Engine:
     """Searchengine URL's"""
+
     GOOGLECOM = "https://google.com/search"
     GOOGLEDE = "https://google.de/search"
     GOOGLEFR = "https://google.fr/search"
     GOOGLEES = "https://google.es/search"
 
 class Query:
-    """Build dork query
-    """
+    """Builder class for dork queries"""
+    
     def __init__(self) -> None:
         self._query = ""
         self._query_size = 0
