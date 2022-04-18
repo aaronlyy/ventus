@@ -6,7 +6,6 @@ from bs4 import BeautifulSoup
 from query import Query
 from filter import Filter
 from engine import Engine
-from search import search
 
 class Ventus:
     def __init__(self, engine: str):
@@ -24,8 +23,6 @@ class Ventus:
         res = requests.get(self._engine, headers=headers, params=dict(q=query.query))
         res.raise_for_status()
 
-        print(res.text)
-
         soup = BeautifulSoup(res.text, "html.parser")
         res_block = soup.find_all("div", attrs={"class": "g"})
         links = []
@@ -34,8 +31,6 @@ class Ventus:
             links.append(element["href"])
 
         return links
-
-
 
     def search(self, query: Query) -> list:
         """Start a dork search with given query
@@ -49,16 +44,3 @@ class Ventus:
         """
         links = self._request(query)
         return links
-
-
-if __name__ == "__main__":
-    ventus = Ventus(Engine.GOOGLECOM)
-
-    query = Query()
-    query.add_keyword("db_password")
-    query.add_filter(Filter.FILETYPE, "env")
-
-    results = ventus.search(query)
-
-    for i in results:
-        print(i)
