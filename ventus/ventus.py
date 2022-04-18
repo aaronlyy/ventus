@@ -23,8 +23,11 @@ class Filter:
     INPOSTAUTHOR = "inpostauthor:" # Exclusive to blog search, this one picks out blog posts that are written by specific individuals.
     RELATED = "related:" # List web pages that are “similar” to a specified web page.
     CACHE = "cache:" # Shows the version of the web page that Google has in its cache.
+    EXT = "ext" # Searches for a particular filetype mentioned in the query.
     AND = "&"
     OR = "|"
+    AND2 = "AND"
+    OR2 = "OR"
 
 class Engine:
     """Searchengine URL's"""
@@ -41,41 +44,56 @@ class Query:
         self._query = ""
         self._query_size = 0
 
-    def add_filter(self, filter: str, keyword: str = "", hide=False) -> None:
-        """Add a filter to the query
+    def _add_space(self):
+        if self._query_size > 0:
+            self._query += " "
+
+    def add_filter(self, filter: str, keyword: str = "", hide: bool = False) -> None:
+        """Add a filter and a keyword (optional) to the query
 
         Args:
             filter (str | Filter): custom filter or Filter.member
             keyword (str | int): Keyword for given filter
             hide (bool): hide matches. Defaults to False.
         """
-        if self._query_size > 0:
-            self._query += " "
+        self._add_space()
         if hide:
             self._query += "-"
 
         self._query += f"{filter}{keyword}"
         self._query_size += 1
 
-    def add_keyword(self, keyword: str, hide=False) -> None:
+    def add_keyword(self, keyword: str, hide: bool = False) -> None:
         """Add a single keyword without a filter
 
         Args:
             keyword (str)
             hide (bool, optional): hide matches. Defaults to False.
         """
-        if self._query_size > 0:
-            self._query += " "
         if hide:
             self._query += "-"
         
         self._query += keyword
         self._query_size += 1
-        
+
+    def add_keyword_group(self, keywords: list, operator: str = Filter.OR, hide: bool = False) -> None:
+        """Add a group of keywords to the query
+
+        Args:
+            keywords (list): List of keywords
+            operator (str, optional): Operator between the keywords (Most of the time | or &). Defaults to Filter.OR.
+        """
+        if hide:
+            self._query += "-"
+        self._query += f'({f" {operator} ".join(keywords)})'
+        self._query_size += 1
 
     @property
     def query(self) -> str:
         return self._query
+
+    def __str__(self):
+        return self.query
 
 class Ventus:
     def __init__(self, engine: str = Engine.GOOGLECOM):
@@ -121,6 +139,12 @@ class Ventus:
 
 if __name__ == "__main__":
     q = Query()
-    q.add_filter(Filter.INTEXT, "test12345")
-    v = Ventus()
-    print(v.search(q))
+    q.add_filter(Filter.INTITLE, "index of /")
+    q.add_filter(Filter.AND)
+    q.add_filter(Filter.INTEXT)
+    q.add_keyword_group(["Backup", "backup", "recovery"])
+    q.add_filter(Filter.AND)
+    q.add_filter(Filter.INTITLE)
+    q.add_keyword_group(["iphone", "samsung", "huawei"])
+
+    print(q)
