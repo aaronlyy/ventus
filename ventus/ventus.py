@@ -136,15 +136,3 @@ class Ventus:
         html = self._request(query)
         links = self._parse(html)
         return links
-
-if __name__ == "__main__":
-    q = Query()
-    q.add_filter(Filter.INTITLE, "index of /")
-    q.add_filter(Filter.AND)
-    q.add_filter(Filter.INTEXT)
-    q.add_keyword_group(["Backup", "backup", "recovery"])
-    q.add_filter(Filter.AND)
-    q.add_filter(Filter.INTITLE)
-    q.add_keyword_group(["iphone", "samsung", "huawei"])
-
-    print(q)
