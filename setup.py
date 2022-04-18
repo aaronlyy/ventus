@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.1'
+VERSION = '0.0.2'
 DESCRIPTION = 'A google dorking library and cli.'
 LONG_DESCRIPTION = 'Use google dorking directly in python and from your terminal.'
 
