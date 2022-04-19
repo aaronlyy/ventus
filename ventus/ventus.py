@@ -1,5 +1,4 @@
 # ventus.py
-from unittest import result
 import requests
 from bs4 import BeautifulSoup
 
@@ -115,7 +114,7 @@ class Ext:
     LIST_EXCEL = [XLS, XLT, XLM, XLL_, XLA_, XLA5, XLA8, XLSX, XLSM, XLTS, XLSB, XLA, XLAM, XLL, XLW]
     LIST_WORD = [DOC, DOT, WBK, DOCX, DOTX, DOTM, DOCB, WLL, WWL]
 
-class Sites:
+class Site:
     """Collection of some useful sites for dorking"""
     # file sharing
     GOOGLEDRIVE = "drive.google.com"
@@ -379,7 +378,7 @@ def search_index_of(folder: str) -> list:
 
 def search_onlyfans(name: str) -> list:
     results = []
-    for s in Sites.LIST_PASTING:
+    for s in Site.LIST_PASTING:
         q = Query()
         q.raw(name)
         q.site(s)
