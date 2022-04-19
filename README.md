@@ -50,6 +50,7 @@ for r in results:
 - add support for proxy lists
 - add a command-line interface wrapper
 - write predefined queries
+- add duckduckgo & yahoo support
 
 ### about
 
