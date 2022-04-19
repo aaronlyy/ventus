@@ -47,6 +47,7 @@ for r in results:
 
 ## ToDo
 
+- Add Query.add_raw()
 - Add support for proxy lists
 - Add a command-line interface wrapper
 - Write predefined queries
