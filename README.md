@@ -48,6 +48,7 @@ for r in results:
 ## ToDo
 
 - Add Query.add_raw()
+- Fix spacing between filters and keywords
 - Add support for proxy lists
 - Add a command-line interface wrapper
 - Write predefined queries
