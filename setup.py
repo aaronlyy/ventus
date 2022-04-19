@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.2'
+VERSION = '0.1.0'
 DESCRIPTION = 'A google dorking library and cli.'
 LONG_DESCRIPTION = 'Use google dorking directly in python and from your terminal.'
 
@@ -17,7 +17,6 @@ setup(
     install_requires=['requests', 'bs4', 'beautifulsoup4', 'click'],
     keywords=['dorking', 'google', 'scraping', 'google dorking', 'hacking', 'cracking'],
     classifiers=[
-        "Development Status :: 1 - Planning",
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
         "Operating System :: Unix",
