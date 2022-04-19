@@ -48,6 +48,7 @@ for r in results:
 ## ToDo
 
 - Add Query.add_raw()
+- Add option to search raw queries instead of Query objects in Ventus()
 - Fix spacing between filters and keywords
 - Add support for proxy lists
 - Add a command-line interface wrapper
