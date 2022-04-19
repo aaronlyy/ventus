@@ -1,4 +1,5 @@
 # ventus.py
+from unittest import result
 import requests
 from bs4 import BeautifulSoup
 
@@ -88,6 +89,8 @@ class Ext:
     OGG = "ogg"
     OGV = "ogv"
     MPG = "mpg"
+    AAC = "aac"
+    WMA = "wma"
     # images
     JPG = "jpg"
     JPEG = "jpeg"
@@ -105,6 +108,42 @@ class Ext:
     TIFF = "tiff"
     AVIF = "avif"
     APNG = "apng"
+    # lists
+    LIST_IMAGE = [JPG, JPEG, JIFF, PJPEG, PJP, PNG, SVG, WEBP, GIF, BMP, ICO, CUR, TIF, TIFF, AVIF, APNG]
+    LIST_VIDEO = [MOV, MP4, WMV, AVI, AVCHD, FLV, F4V, SWF, MKV, WEBM, OGG, OGV, MPG, AAC, WMA]
+    LIST_POWERPOINT = [PPT, POT, PPS, PPA, PPAM, PPTX, PPTM, POTX, POTM, PPAM, PPSX, PPSM, SLDX, SLDM, PA]
+    LIST_EXCEL = [XLS, XLT, XLM, XLL_, XLA_, XLA5, XLA8, XLSX, XLSM, XLTS, XLSB, XLA, XLAM, XLL, XLW]
+    LIST_WORD = [DOC, DOT, WBK, DOCX, DOTX, DOTM, DOCB, WLL, WWL]
+
+class Sites:
+    """Collection of some useful sites for dorking"""
+    # file sharing
+    GOOGLEDRIVE = "drive.google.com"
+    GOFILE = "gofile.io"
+    ANONFILE = "anonfile.com"
+    BAYFILES = "bayfiles.com"
+    # pasting
+    JUSTPASTE = "justpaste.it"
+    FAMOUSPASTE = "famouspaste.com"
+    PASTELINK = "pastelink.net"
+    NULLBIN = "0bin.net"
+    RENTRY = "rentry.co"
+    PASTESITE = "pastesite.org"
+    FREEPASTE = "freepaste.link"
+    LEAKLINKS = "leaklinks.com"
+    JUSTPASTE = "justpaste.it"
+    PASTEBIN = "pastebin.com"
+    # lists
+    LIST_FILESHARING = [GOOGLEDRIVE, GOFILE, ANONFILE, BAYFILES]
+    LIST_PASTING = [JUSTPASTE, FAMOUSPASTE, PASTELINK, NULLBIN, RENTRY, PASTESITE, FREEPASTE, LEAKLINKS, JUSTPASTE, PASTEBIN]
+
+class Indexing:
+    CRACKS = "cracks"
+    CRACK = "crack"
+    LEAK = "leak"
+    LEAKS = "leaks"
+    LASTMOD = "lastmodified"
+    LIST_CRACK = [CRACKS, LEAKS, CRACK, LEAK]
 
 class Engine:
     """Searchengine URL's"""
@@ -115,7 +154,6 @@ class Engine:
 
 class Query:
     """Dork query builder"""
-    
     def __init__(self) -> None:
         self._query = ""
         self._query_size = 0
@@ -262,6 +300,11 @@ class Query:
         sub = self._build_subquery_string(Filter.OR2, keywords, group_seperator, hide)
         self._append_query_string(sub)
 
+    def keyword_group(self, keywords: list, group_seperator: str = "|", hide: bool = False) -> None:
+        """Adds a list of keywords to the query."""
+        sub = self._build_subquery_string("", keywords, group_seperator, hide)
+        self._append_query_string(sub)
+
     def raw(self, raw: str) -> None:
         """Add a raw string to the query"""
         self._append_query_string(raw)
@@ -273,7 +316,7 @@ class Query:
     def __str__(self):
         return self.query
 
-class Ventus:
+class Searcher:
     def __init__(self, engine: str = Engine.GOOGLECOM):
         """
         Args:
@@ -281,13 +324,13 @@ class Ventus:
         """
         self._engine = engine
 
-    def _request(self, query: Query) -> str:
+    def _request(self, query: str) -> str:
         headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'
         }
         res = requests.get(self._engine,
         headers=headers,
-        params=dict(q=query.query)
+        params=dict(q=query)
         )
         res.raise_for_status()
         return res.text
@@ -301,7 +344,7 @@ class Ventus:
             links.append(element["href"])
         return links
 
-    def search(self, query: Query) -> list:
+    def search(self, query: Query | str) -> list:
         """Start a dork search with given query
 
         Args:
@@ -311,6 +354,35 @@ class Ventus:
         Returns:
             list: list of results
         """
-        html = self._request(query)
+        if type(query) == Query:
+            query_string = query.query
+        else:
+            query_string = query
+        
+        html = self._request(query_string)
         links = self._parse(html)
         return links
+
+def search(query: Query | str) -> list:
+    """Wrapper around ventus.search"""
+    s = Searcher()
+    return s.search(query)
+
+# predefined searches
+def search_index_of(folder: str) -> list:
+    q = Query()
+    q.allintitle(f"index of /{folder}")
+    results = []
+    for r in search(q):
+        results.append(r)
+    return results
+
+def search_onlyfans(name: str) -> list:
+    results = []
+    for s in Sites.LIST_PASTING:
+        q = Query()
+        q.raw(name)
+        q.site(s)
+        r = search(q)
+        results.extend(r)
+    return results
