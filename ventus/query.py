@@ -1,4 +1,4 @@
-from filters import Filter
+from .filters import Filter
 
 class Query:
     """Dork query builder"""

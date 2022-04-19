@@ -1,8 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
-from engine import Engine
-from query import Query
+from .engine import Engine
+from .query import Query
 
 class Searcher:
     def __init__(self, engine: str = Engine.GOOGLECOM):

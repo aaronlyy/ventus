@@ -1,6 +1,6 @@
-from searcher import Searcher
-from query import Query
-from sites import Site
+from .searcher import Searcher
+from .query import Query
+from .sites import Site
 
 def search(query: Query | str) -> list:
     """Wrapper around ventus.search"""

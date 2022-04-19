@@ -13,7 +13,7 @@ setup(
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=LONG_DESCRIPTION,
-    packages=find_packages(),
+    packages=["ventus"],
     install_requires=['requests', 'bs4', 'beautifulsoup4', 'click'],
     keywords=['dorking', 'google', 'scraping', 'google dorking', 'hacking', 'cracking'],
     classifiers=[
