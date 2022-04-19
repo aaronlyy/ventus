@@ -1,12 +1,12 @@
-# ventus: a google dorking library and command-line interface
+# ventus: A Google Dorking library and Command-Line Interface
 
-## installation
+## Installation
 
-install ventus with pip
+Install ventus with pip
 
 ```pip install ventus```
 
-## how to use
+## How to use
 
 ### Example 1: Getting public database passwords
 
@@ -45,13 +45,13 @@ for r in results:
     print(r)
 ```
 
-## todo
+## ToDo
 
-- add support for proxy lists
-- add a command-line interface wrapper
-- write predefined queries
-- add duckduckgo & yahoo support
+- Add support for proxy lists
+- Add a command-line interface wrapper
+- Write predefined queries
+- Add DuckDuckGo & Yahoo support
 
-### about
+### About
 
-made with ♥ by [aaronlyy](https://github.com/aaronlyy)
+Made with ♥ by [aaronlyy](https://github.com/aaronlyy)
