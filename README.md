@@ -6,12 +6,69 @@ Install ventus with pip
 
 ```pip install ventus```
 
+## Usage
+
+### Example 1: Search a string
+
+```py
+from ventus import search
+
+results = search("test")
+
+for r in results:
+    print(r)
+```
+
+### Example 2: Search a raw dork query
+```py
+from ventus import search
+
+results = search("site:wikipedia.com mercedes")
+
+for r in results:
+    print(r)
+
+for r in results:
+    print(r)
+```
+
+### Example 3: Build and Search a Query using the Query builder
+```py
+from ventus import search, Query
+
+q = Query()
+q.site("finance.yahoo.com")
+q.intitle("AMD")
+
+print(q) # site:finance.yahoo.com intitle:AMD
+
+# search query
+results = search(q)
+
+for r in results:
+    print(r)
+```
+
+### Example 4: Add a Keyword Group to a Query
+
+```py
+from ventus import seach, Query, Filter
+
+q = Query()
+q.site("finance.yahoo.com")
+q.intitle(["BMW", "Mercedes"], group_seperator=Filter.AND)
+
+print(q) # site:finance.yahoo.com intitle:(BMW & Mercedes)
+```
+
 ## ToDo
 
 - Add support for proxy lists
 - Add a command-line interface wrapper
-- Write predefined queries
+- Add option to choose number of links to return
+- Write more predefined queries
 - Add DuckDuckGo & Yahoo support
+- Add more Examples and Documentation
 
 ### About
 
