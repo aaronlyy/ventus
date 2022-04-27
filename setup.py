@@ -1,5 +1,6 @@
 import os
 import sys
+from importlib_metadata import entry_points
 from setuptools import setup, find_packages
 
 # --- version check ---
@@ -29,7 +30,7 @@ with open("README.md", "r") as f:
 # --- setting up ---
 setup(
     name="ventus",
-    version='0.1.2',
+    version='0.1.3',
     author="aaronlyy (Aaron Levi)",
     author_email="<aaronlevican@gmail.com>",
     url="https://github.com/aaronlyy/ventus",
@@ -37,6 +38,11 @@ setup(
     long_description_content_type="text/markdown",
     long_description=readme,
     packages=["ventus"],
+    entry_points={
+        "console_scripts": [
+            "ventus = ventus.cli:cli"
+        ]
+    },
     install_requires=['requests', 'beautifulsoup4', 'click'],
     keywords=['dorking', 'google', 'scraping', 'google dorking', 'hacking', 'cracking'],
     classifiers=[
