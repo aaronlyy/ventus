@@ -80,10 +80,9 @@ print(q) # site:finance.yahoo.com intitle:(BMW & Mercedes)
 ## ToDo
 
 - Add support for proxy lists
-- Add a command-line interface wrapper
+- Add more command-line interface endpoints & options
 - Add option to choose number of links to return
 - Write more predefined queries
-- Add DuckDuckGo & Yahoo support
 - Add more Examples and Documentation
 
 ### About
