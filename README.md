@@ -1,4 +1,4 @@
-# ventus: A Google Dorking library and Command-Line Interface
+# ventus: A Google Dorking library and Command-Line Interface 👾
 
 ## Installation
 
