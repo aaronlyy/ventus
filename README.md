@@ -2,11 +2,27 @@
 
 ## Installation
 
+<b>!!! ventus requires Python 3.10 or above to work !!!</b>
+
 Install ventus with pip
 
 ```pip install ventus```
 
-## Usage
+## Usage (command-line interface)
+
+```txt
+Usage: ventus [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  indexof   Predefined 'index of /' search
+  onlyfans  Find leaks of onlyfans models
+  search    Search a query on Google
+```
+
+## Usage (library)
 
 ### Example 1: Search a string
 
