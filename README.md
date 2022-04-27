@@ -48,7 +48,7 @@ for r in results:
     print(r)
 ```
 
-### Example 3: Build and Search a Query using the Query builder
+### Example 3: Build and search a query using the query builder
 ```py
 from ventus import search, Query
 
@@ -65,7 +65,7 @@ for r in results:
     print(r)
 ```
 
-### Example 4: Add a Keyword Group to a Query
+### Example 4: Add a keyword group to a query
 
 ```py
 from ventus import seach, Query, Filter
@@ -77,7 +77,7 @@ q.intitle(["BMW", "Mercedes"], group_seperator=Filter.AND)
 print(q) # site:finance.yahoo.com intitle:(BMW & Mercedes)
 ```
 
-## ToDo
+## To Do
 
 - Add support for proxy lists
 - Add more command-line interface endpoints & options
