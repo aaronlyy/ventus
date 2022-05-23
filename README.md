@@ -70,13 +70,19 @@ for r in results:
 ### Example 4: Add a keyword group to a query
 
 ```py
-from ventus import seach, Query, Filter
+from ventus import search, Query, Filter
 
 q = Query()
 q.site("finance.yahoo.com")
 q.intitle(["BMW", "Mercedes"], group_seperator=Filter.AND)
 
 print(q) # site:finance.yahoo.com intitle:(BMW & Mercedes)
+
+# search query
+results = search(q)
+
+for r in results:
+    print(r)
 ```
 
 ## To Do
