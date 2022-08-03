@@ -1,6 +1,6 @@
 
 
-< align="center"p>
+<p align="center">
 <img src=".\media\banner.png" alt="banner">
 <h2>A Google Dorking library & Command-Line Interface 👾</h2>
 </p> 
