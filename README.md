@@ -1,6 +1,9 @@
-<img align="center" src=".\media\banner.png" alt="banner">
 
-# ventus: A Google Dorking library & Command-Line Interface 👾
+
+< align="center"p>
+<img src=".\media\banner.png" alt="banner">
+<h2>A Google Dorking library & Command-Line Interface 👾</h2>
+</p> 
 
 ## Installation
 
