@@ -1,9 +1,10 @@
 
 
 <p align="center">
-<img src=".\media\banner.png" alt="banner">
-<h2>A Google Dorking library & Command-Line Interface 👾</h2>
-</p> 
+  <img src=".\media\banner.png" alt="banner">
+</p>
+
+<h2 align="center">A Google Dorking library & Command-Line Interface 👾</h2>
 
 ## Installation
 
