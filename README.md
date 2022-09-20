@@ -6,6 +6,10 @@
 
 <h3 align="center">A Google Dorking library & Command-Line Interface 👾</h3>
 
+<p align="center">
+  <img alt="GitHub" src="https://img.shields.io/github/license/aaronlyy/ventus">
+</p>
+
 ## Installation
 
 Install ventus with pip
