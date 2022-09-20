@@ -1,6 +1,10 @@
-<img align="center" src=".\media\banner.png" alt="banner">
 
-# ventus: A Google Dorking library & Command-Line Interface 👾
+
+<p align="center">
+  <img src=".\media\banner.png" alt="banner">
+</p>
+
+<h3 align="center">A Google Dorking library & Command-Line Interface 👾</h3>
 
 ## Installation
 
@@ -70,13 +74,19 @@ for r in results:
 ### Example 4: Add a keyword group to a query
 
 ```py
-from ventus import seach, Query, Filter
+from ventus import search, Query, Filter
 
 q = Query()
 q.site("finance.yahoo.com")
 q.intitle(["BMW", "Mercedes"], group_seperator=Filter.AND)
 
 print(q) # site:finance.yahoo.com intitle:(BMW & Mercedes)
+
+# search query
+results = search(q)
+
+for r in results:
+    print(r)
 ```
 
 ## To Do
