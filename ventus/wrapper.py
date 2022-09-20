@@ -2,7 +2,7 @@ from .searcher import Searcher
 from .query import Query
 from .sites import Site
 
-def search(query: Query | str) -> list:
+def search(query: Query) -> list:
     """Wrapper around searcher.search"""
     s = Searcher()
     return s.search(query)

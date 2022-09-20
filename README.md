@@ -8,8 +8,6 @@
 
 ## Installation
 
-<b>!!! ventus requires Python 3.10 or above to work !!!</b>
-
 Install ventus with pip
 
 ```pip install ventus```
