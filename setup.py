@@ -1,11 +1,10 @@
 import os
 import sys
-from importlib_metadata import entry_points
 from setuptools import setup, find_packages
 
 # --- version check ---
 CURRENT_PYTHON = sys.version_info[:2]
-REQUIRED_PYTHON = (3, 10)
+REQUIRED_PYTHON = (3, 6)
 if CURRENT_PYTHON < REQUIRED_PYTHON:
     print(
 f"""
@@ -30,7 +29,7 @@ with open("README.md", "r") as f:
 # --- setting up ---
 setup(
     name="ventus",
-    version='0.1.3',
+    version='0.2.0',
     author="aaronlyy (Aaron Levi)",
     author_email="<aaronlevican@gmail.com>",
     url="https://github.com/aaronlyy/ventus",
@@ -47,6 +46,10 @@ setup(
     keywords=['dorking', 'google', 'scraping', 'google dorking', 'hacking', 'cracking'],
     classifiers=[
         "Intended Audience :: Developers",
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.11',
         'Programming Language :: Python :: 3 :: Only',

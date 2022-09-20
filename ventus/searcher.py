@@ -32,7 +32,7 @@ class Searcher:
             links.append(element["href"])
         return links
 
-    def search(self, query: Query | str) -> list:
+    def search(self, query: Query) -> list:
         """Start a dork search with given query
 
         Args:
