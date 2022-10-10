@@ -7,8 +7,9 @@
 <h3 align="center">A Google Dorking library & Command-Line Interface 👾</h3>
 
 <p align="center">
-  <img alt="GitHub" src="https://img.shields.io/github/license/aaronlyy/ventus">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/aaronlyy/ventus">
   <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/aaronlyy/ventus">
+  <img alt="GitHub" src="https://img.shields.io/github/license/aaronlyy/ventus">
 </p>
 
 ## Installation
