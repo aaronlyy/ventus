@@ -21,15 +21,14 @@ Install ventus with pip
 ## Usage (command-line interface)
 
 ```txt
-Usage: ventus [OPTIONS] COMMAND [ARGS]...
+Usage: ventus [OPTIONS] QUERY
 
 Options:
-  --help  Show this message and exit.
-
-Commands:
-  indexof   Predefined 'index of /' search
-  onlyfans  Find leaks of onlyfans models
-  search    Search a query on Google
+  --help                Show this message and exit.
+  -l, --leak            Search leaked images and pictures
+  -p, --presentation    Search for PDF & PPTX files
+  -i, --index           Search index of /
+  -d, --document        Search for DOCX files
 ```
 
 ## Usage (library)
@@ -96,9 +95,7 @@ for r in results:
 ## To Do
 
 - Add support for proxy lists
-- Add more command-line interface endpoints & options
 - Add option to choose number of links to return
-- Write more predefined queries
 - Add more Examples and Documentation
 
 ### About

@@ -8,7 +8,6 @@ from .wrapper import index_of as wrapper_index
 from .wrapper import presentation as wrapper_presentation
 from .wrapper import document as wrapper_document
 
-
 LINKVERTISE_MESSAGE = "---\n!!! Redirected to linkvertise.com? Use 'thebypasser.com' to bypass linkvertise links! !!!\n---"
 
 @click.command()
@@ -16,7 +15,6 @@ LINKVERTISE_MESSAGE = "---\n!!! Redirected to linkvertise.com? Use 'thebypasser.
 @click.option("-p", "--presentation", default=False, required=False, is_flag=True)
 @click.option("-i", "--index", default=False, required=False, is_flag=True)
 @click.option("-d", "--document", default=False, required=False, is_flag=True)
-@click.option("-e", "--env", default=False, required=False, is_flag=True)
 @click.argument("query")
 def cli(leak, presentation, document, env, index, query) -> None:
     if (leak):
