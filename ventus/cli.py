@@ -16,7 +16,7 @@ LINKVERTISE_MESSAGE = "---\n!!! Redirected to linkvertise.com? Use 'thebypasser.
 @click.option("-i", "--index", default=False, required=False, is_flag=True)
 @click.option("-d", "--document", default=False, required=False, is_flag=True)
 @click.argument("query")
-def cli(leak, presentation, document, env, index, query) -> None:
+def cli(leak, presentation, document, index, query) -> None:
     if (leak):
         click.echo(LINKVERTISE_MESSAGE)
         results = wrapper_leak(query)
