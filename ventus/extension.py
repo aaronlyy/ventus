@@ -77,6 +77,8 @@ class Extension:
     TIFF = "tiff"
     AVIF = "avif"
     APNG = "apng"
+
+    ENV = "env"
     # lists
     LIST_IMAGE = [JPG, JPEG, JIFF, PJPEG, PJP, PNG, SVG, WEBP, GIF, BMP, ICO, CUR, TIF, TIFF, AVIF, APNG]
     LIST_VIDEO = [MOV, MP4, WMV, AVI, AVCHD, FLV, F4V, SWF, MKV, WEBM, OGG, OGV, MPG, AAC, WMA]

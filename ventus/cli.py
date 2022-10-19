@@ -2,57 +2,39 @@
 
 import click
 
-from .wrapper import search as v_search
-from .wrapper import search_onlyfans as v_onlyfans
-from .wrapper import search_index_of as v_index
+from .wrapper import search as wrapper_search
+from .wrapper import leak as wrapper_leak
+from .wrapper import index_of as wrapper_index
+from .wrapper import presentation as wrapper_presentation
+from .wrapper import document as wrapper_document
+
 
 LINKVERTISE_MESSAGE = "---\n!!! Redirected to linkvertise.com? Use 'thebypasser.com' to bypass linkvertise links! !!!\n---"
 
-@click.group()
-def cli():
-    pass
-
-@cli.command()
+@click.command()
+@click.option("-l", "--leak", default=False, required=False, is_flag=True)
+@click.option("-p", "--presentation", default=False, required=False, is_flag=True)
+@click.option("-i", "--index", default=False, required=False, is_flag=True)
+@click.option("-d", "--document", default=False, required=False, is_flag=True)
+@click.option("-e", "--env", default=False, required=False, is_flag=True)
 @click.argument("query")
-def search(query: str) -> None:
-    """Search a query on Google
-
-    Args:
-        query (str): Query
-    """
-    results = v_search(query)
-    if len(results) > 0:
+def cli(leak, presentation, document, env, index, query) -> None:
+    if (leak):
+        click.echo(LINKVERTISE_MESSAGE)
+        results = wrapper_leak(query)
+    elif (index):
+        results = wrapper_index(query)
+    elif (document):
+        results = wrapper_document(query)
+    elif (presentation):
+        results = wrapper_presentation(query)
+    else:
+        results = wrapper_search(query)
+    
+    if (len(results) > 0):
         for url in results:
-            print(url)
-    click.echo(LINKVERTISE_MESSAGE)
-
-@cli.command()
-@click.argument("name")
-def onlyfans(name: str) -> None:
-    """Find leaks of onlyfans models
-
-    Args:
-        query (str): Query
-    """
-    results = v_onlyfans(name)
-    if len(results) > 0:
-        for url in results:
-            print(url)
-    click.echo(LINKVERTISE_MESSAGE)
-
-@cli.command()
-@click.argument("folder")
-def indexof(folder: str) -> None:
-    """Predefined 'index of /' search
-
-    Args:
-        folder (str): Name of folder
-    """
-    results = v_index(folder)
-    if len(results) > 0:
-        for url in results:
-            print(url)
-    click.echo(LINKVERTISE_MESSAGE)
-
+            click.echo(f"[+] {url}")
+    else:
+        click.echo("No results. Try a different method/query or use a VPN.")
 if __name__ == "__main__":
     cli()

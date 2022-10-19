@@ -5,6 +5,8 @@ class Site:
     GOFILE = "gofile.io"
     ANONFILE = "anonfile.com"
     BAYFILES = "bayfiles.com"
+    # leak
+    COOMER = "coomer.party"
     # pasting
     JUSTPASTE = "justpaste.it"
     FAMOUSPASTE = "famouspaste.com"
@@ -19,3 +21,4 @@ class Site:
     # lists
     LIST_FILESHARING = [GOOGLEDRIVE, GOFILE, ANONFILE, BAYFILES]
     LIST_PASTING = [JUSTPASTE, FAMOUSPASTE, PASTELINK, NULLBIN, RENTRY, PASTESITE, FREEPASTE, LEAKLINKS, JUSTPASTE, PASTEBIN]
+    LIST_LEAK = [COOMER]
