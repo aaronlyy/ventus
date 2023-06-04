@@ -1,4 +1,3 @@
-from .engine import Engine
 from .extension import Extension
 from .filters import Filter
 from .index import Index
