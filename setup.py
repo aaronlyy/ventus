@@ -29,7 +29,7 @@ with open("README.md", "r") as f:
 # --- setting up ---
 setup(
     name="ventus",
-    version='0.3.3',
+    version='0.3.4',
     author="aaronlyy (Aaron Levi)",
     author_email="<aaronlevican@gmail.com>",
     url="https://github.com/aaronlyy/ventus",
