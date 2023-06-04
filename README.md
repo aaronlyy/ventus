@@ -1,5 +1,4 @@
 
-
 <p align="center">
   <img src=".\media\banner.png" alt="banner">
 </p>
@@ -45,6 +44,7 @@ for r in results:
 ```
 
 ### Example 2: Search a raw dork query
+
 ```py
 from ventus import search
 
@@ -58,6 +58,7 @@ for r in results:
 ```
 
 ### Example 3: Build and search a query using the query builder
+
 ```py
 from ventus import search, Query
 
