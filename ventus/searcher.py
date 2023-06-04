@@ -5,10 +5,6 @@ from .query import Query
 
 class Searcher:
     def __init__(self):
-        """
-        Args:
-            engine (str): query url from a searchengine (ex. Engine.GOOGLECOM)
-        """
         self._engine = "https://google.com/search"
 
     def _request(self, query: str) -> str:
