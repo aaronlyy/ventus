@@ -92,13 +92,13 @@ for r in results:
     print(r)
 ```
 
-## To Do
+## Roadmap
 
-- Add option to choose number of links to return
-- CLI Query Builder
-- Query builder recode
+- Move search wrapper directly into cli.py [DONE]
+- Option to choose number of links to return
+- Recode parts of the query builder
 - More pre configured searches in CLI
-- Remove engine.py, use .com always
+- Option to use custom queries directly in the terminal
 
 ### About
 

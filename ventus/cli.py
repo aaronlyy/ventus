@@ -2,37 +2,61 @@
 
 import click
 
-from .wrapper import search as wrapper_search
-from .wrapper import leak as wrapper_leak
-from .wrapper import index_of as wrapper_index
-from .wrapper import presentation as wrapper_presentation
-from .wrapper import document as wrapper_document
+from .searcher import search
+from .query import Query
+from .sites import Site
+from .extension import Extension
 
-LINKVERTISE_MESSAGE = "---\n!!! Redirected to linkvertise.com? Use 'thebypasser.com' to bypass linkvertise links! !!!\n---"
+BYPASS_MESSAGE = "---\nUse 'thebypasser.com' or 'bypass.pm' to bypass ad-links!\n---"
 
 @click.command()
-@click.option("-l", "--leak", default=False, required=False, is_flag=True)
-@click.option("-p", "--presentation", default=False, required=False, is_flag=True)
-@click.option("-i", "--index", default=False, required=False, is_flag=True)
-@click.option("-d", "--document", default=False, required=False, is_flag=True)
+@click.option("-p", "--paste", default=False, required=False, is_flag=True, help="Search paste sites")
+@click.option("-f", "--file", default=False, required=False, is_flag=True, help="Search filesharing sites")
+@click.option("-i", "--index", default=False, required=False, is_flag=True, help="Search 'index of /<>'")
+@click.option("-d", "--document", default=False, required=False, is_flag=True, help="Search for document filetypes")
 @click.argument("query")
-def cli(leak, presentation, document, index, query) -> None:
-    if (leak):
-        click.echo(LINKVERTISE_MESSAGE)
-        results = wrapper_leak(query)
+def cli(paste, file, document, index, query) -> None:
+    results = []
+    if (paste):
+        click.echo(BYPASS_MESSAGE)
+        for s in Site.LIST_PASTING:
+            q = Query()
+            q.raw(query)
+            q.site(s)
+            res = search(q)
+            results.extend(res)
+
+    elif (file):
+        for s in Site.LIST_FILESHARING:
+            q = Query()
+            q.raw(query)
+            q.site(s)
+            res = search(q)
+            results.extend(res)
+
     elif (index):
-        results = wrapper_index(query)
+        click.echo("wip")
+        q = Query()
+        q.allintitle(f"index of /{query}")
+        res = search(q)
+        results.extend(res)
+
     elif (document):
-        results = wrapper_document(query)
-    elif (presentation):
-        results = wrapper_presentation(query)
+        q = Query()
+        q.intitle(query)
+        q.filetype([Extension.PDF, Extension.DOCX])
+        res = search(q)
+        results.extend(res)
+
     else:
-        results = wrapper_search(query)
+        results = search(query)
     
     if (len(results) > 0):
         for url in results:
             click.echo(f"[+] {url}")
+
     else:
         click.echo("No results. Try a different method/query or use a VPN.")
+
 if __name__ == "__main__":
     cli()

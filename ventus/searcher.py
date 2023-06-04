@@ -49,3 +49,8 @@ class Searcher:
         html = self._request(query_string)
         links = self._parse(html)
         return links
+    
+def search(query: Query) -> list:
+    """Wrapper around searcher.search"""
+    s = Searcher()
+    return s.search(query)
