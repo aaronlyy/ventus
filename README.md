@@ -94,9 +94,11 @@ for r in results:
 
 ## To Do
 
-- Add support for proxy lists
 - Add option to choose number of links to return
-- Add more Examples and Documentation
+- CLI Query Builder
+- Query builder recode
+- More pre configured searches in CLI
+- Remove engine.py, use .com always
 
 ### About
 

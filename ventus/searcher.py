@@ -1,16 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
 
-from .engine import Engine
 from .query import Query
 
 class Searcher:
-    def __init__(self, engine: str = Engine.GOOGLECOM):
+    def __init__(self):
         """
         Args:
             engine (str): query url from a searchengine (ex. Engine.GOOGLECOM)
         """
-        self._engine = engine
+        self._engine = "https://google.com/search"
 
     def _request(self, query: str) -> str:
         headers = {
