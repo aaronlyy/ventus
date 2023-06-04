@@ -23,9 +23,9 @@ Install ventus with pip
 Usage: ventus [OPTIONS] QUERY
 
 Options:
-  --help                Show this message and exit.
-  -l, --leak            Search leaked images and pictures
-  -p, --presentation    Search for PDF & PPTX files
+  --help                Show this message and exit
+  -p, --paste           Search paste sites
+  -f, --files           Search filesharing sites
   -i, --index           Search index of /
   -d, --document        Search for DOCX files
 ```
