@@ -95,11 +95,14 @@ for r in results:
 
 ## Roadmap
 
-- Move search wrapper directly into cli.py [DONE]
-- Option to choose number of links to return
-- Recode parts of the query builder
-- More pre configured searches in CLI
-- Option to use custom queries directly in the terminal
+- recode searcher and add support for pagination
+- add option to choose number of links to return
+- more pre configured searches in cli
+- recode query builder
+- show live updates while searching
+- add proxy from file support
+- add exceptions
+- refactor all files
 
 ### About
 

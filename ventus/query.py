@@ -161,5 +161,5 @@ class Query:
     def query(self) -> str:
         return self._query
 
-    def __str__(self):
-        return self.query
+    def __str__(self) -> str:
+        return self._query
